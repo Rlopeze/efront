@@ -64,8 +64,10 @@ export const menTags: [
         {
           href: '#',
           description: 'E-Gift Card',
-        }],
-    }],
+        },
+      ],
+    },
+  ],
   [
     {
       title: 'Products',
@@ -158,7 +160,7 @@ export const menTags: [
           description: 'Graphics',
         },
       ],
-    }
+    },
   ],
   [
     {
@@ -191,7 +193,7 @@ export const menTags: [
       ],
     },
   ],
-]
+];
 
 export const womenTags: [
   { title: string; items: { href: string; description: string }[] }[],
@@ -259,8 +261,10 @@ export const womenTags: [
         {
           href: '#',
           description: 'E-Gift Card',
-        }],
-    }],
+        },
+      ],
+    },
+  ],
   [
     {
       title: 'Products',
@@ -355,7 +359,8 @@ export const womenTags: [
         {
           href: '#',
           description: 'Sweat',
-        },        {
+        },
+        {
           href: '#',
           description: 'Graphics',
         },
@@ -368,7 +373,7 @@ export const womenTags: [
           description: 'Vital Seamless',
         },
       ],
-    }
+    },
   ],
   [
     {
@@ -405,7 +410,7 @@ export const womenTags: [
       ],
     },
   ],
-]
+];
 
 export const accesoriesTags: [
   { title: string; items: { href: string; description: string }[] }[],
@@ -436,17 +441,18 @@ export const accesoriesTags: [
         {
           href: '#',
           description: 'Sale Accessories',
-        }],
+        },
+      ],
     },
     {
       title: 'Footwear',
       items: [
         {
           href: '#',
-          description: "Slides",
+          description: 'Slides',
         },
       ],
-    }
+    },
   ],
   [
     {
@@ -501,7 +507,7 @@ export const accesoriesTags: [
           description: "Men's Underwear",
         },
       ],
-    }
+    },
   ],
   [
     {
@@ -536,7 +542,7 @@ export const accesoriesTags: [
           href: '#',
           description: 'All Bottles',
         },
-      ]
-    }
+      ],
+    },
   ],
-]
+];

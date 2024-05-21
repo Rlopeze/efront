@@ -1,4 +1,5 @@
-import { afterAll, beforeAll, vi, afterEach } from "vitest";
+/* eslint-disable import/no-extraneous-dependencies */
+import { afterAll, beforeAll, vi, afterEach } from 'vitest';
 import * as nextRouter from 'next-router-mock';
 import '@testing-library/jest-dom';
 

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import Layout from '../components/wrappers/Layout';
 import { ScrollArea } from '../components/ui/scroll-area';
 import {
@@ -58,4 +59,3 @@ const Product = () => {
 };
 
 export default Product;
-

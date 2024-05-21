@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/no-array-index-key */
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import {
   NavigationMenu,
@@ -8,36 +11,36 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from '../components/ui/navigation-menu';
+} from './ui/navigation-menu';
 import { BsBag, IoPersonOutline, AiOutlineHeart } from '../utils/icons';
-import { cn } from '../components/ui/utils';
+import { cn } from './ui/utils';
 import SearchBar from './searchBar';
 import { accesoriesTags, menTags, womenTags } from '../utils/navigation-tags';
-import Link from 'next/link';
-
 
 const ListItem = React.forwardRef<
   React.ElementRef<'a'>,
   React.ComponentPropsWithoutRef<'a'>
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn('block select-none rounded-md py-1', className)}
-          {...props}
-        >
-          <p className='text-sm text-gray-500 hover:text-black'>{children}</p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-});
+>(({ className, title, children, ...props }, ref) => (
+  <li>
+    <NavigationMenuLink asChild>
+      <a
+        ref={ref}
+        className={cn('block select-none rounded-md py-1', className)}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...props}
+      >
+        <p className='text-sm text-gray-500 hover:text-black'>{children}</p>
+      </a>
+    </NavigationMenuLink>
+  </li>
+));
 ListItem.displayName = 'ListItem';
 
-
-const NavigationMenuColumn = ({ column } : {column: { title: string; items: { href: string; description: string }[] }[]}) => (
+const NavigationMenuColumn = ({
+  column,
+}: {
+  column: { title: string; items: { href: string; description: string }[] }[];
+}) => (
   <div>
     {column.map((component, componentIndex) => (
       <div key={componentIndex} className='mb-6'>
@@ -51,6 +54,13 @@ const NavigationMenuColumn = ({ column } : {column: { title: string; items: { hr
     ))}
   </div>
 );
+const renderNavigationItems = (tags: any) => (
+  <ul className='flex-cols flex h-[35rem] w-dvw gap-x-20'>
+    {tags.map((column: any, columnIndex: number) => (
+      <NavigationMenuColumn key={columnIndex} column={column} />
+    ))}
+  </ul>
+);
 
 const NavigationMenuItemWithContent = ({
   triggerText,
@@ -59,21 +69,12 @@ const NavigationMenuItemWithContent = ({
   triggerText: string;
   contentItems: any;
 }) => (
-
   <NavigationMenuItem>
     <NavigationMenuTrigger>{triggerText}</NavigationMenuTrigger>
     <NavigationMenuContent>
       {renderNavigationItems(contentItems)}
     </NavigationMenuContent>
   </NavigationMenuItem>
-);
-
-const renderNavigationItems = (tags:any) => (
-  <ul className='flex flex-cols h-[35rem] w-dvw gap-x-20'>
-    {tags.map((column:any, columnIndex:number) => (
-      <NavigationMenuColumn key={columnIndex} column={column} />
-    ))}
-  </ul>
 );
 
 const Navbar = () => {
@@ -83,22 +84,22 @@ const Navbar = () => {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem className='flex w-[10rem] justify-end'>
-          <Link href="/">
-            <Image src={"/Logo.jpeg"} alt='Logo' width={100} height={100}/>
+          <Link href='/'>
+            <Image src='/Logo.jpeg' alt='Logo' width={100} height={100} />
           </Link>
         </NavigationMenuItem>
       </NavigationMenuList>
       <NavigationMenuList className='w-[40rem] justify-end'>
         <NavigationMenuItemWithContent
-          triggerText="Women"
+          triggerText='Women'
           contentItems={womenTags}
         />
         <NavigationMenuItemWithContent
-          triggerText="Mens"
+          triggerText='Mens'
           contentItems={menTags}
         />
         <NavigationMenuItemWithContent
-          triggerText="Accessories"
+          triggerText='Accessories'
           contentItems={accesoriesTags}
         />
       </NavigationMenuList>

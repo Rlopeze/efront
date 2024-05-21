@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable arrow-body-style */
 import * as React from 'react';
 
 import { cn } from './utils';

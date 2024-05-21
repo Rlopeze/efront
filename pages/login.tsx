@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { Separator } from '@radix-ui/react-separator';
 import Image from 'next/image';
 import { zodResolver } from '@hookform/resolvers/zod';

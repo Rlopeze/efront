@@ -1,3 +1,8 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable object-shorthand */
+/* eslint-disable react/jsx-no-constructed-context-values */
+/* eslint-disable consistent-return */
+/* eslint-disable @typescript-eslint/no-shadow */
 import * as React from 'react';
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
