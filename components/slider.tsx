@@ -28,7 +28,7 @@ export function CarouselPlugin({ products }: { products: any }) {
                     src={product.image}
                     alt='product'
                     height={150}
-                    width={1000}
+                    width={300}
                   />
                 </CardContent>
                 <CardFooter className='my-0 flex flex-col items-start justify-start px-0 pt-0.5'>

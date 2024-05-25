@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-array-index-key */
-import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import {
   NavigationMenu,
@@ -15,7 +16,8 @@ import {
 import { BsBag, IoPersonOutline, AiOutlineHeart } from '../utils/icons';
 import { cn } from './ui/utils';
 import SearchBar from './searchBar';
-import { accesoriesTags, menTags, womenTags } from '../utils/navigation-tags';
+import { accesoriesTags, womenTags } from '../utils/navigation-tags';
+import { ShopCart } from './cart';
 
 const ListItem = React.forwardRef<
   React.ElementRef<'a'>,
@@ -54,6 +56,7 @@ const NavigationMenuColumn = ({
     ))}
   </div>
 );
+
 const renderNavigationItems = (tags: any) => (
   <ul className='flex-cols flex h-[35rem] w-dvw gap-x-20'>
     {tags.map((column: any, columnIndex: number) => (
@@ -78,46 +81,67 @@ const NavigationMenuItemWithContent = ({
 );
 
 const Navbar = () => {
+  // TODO: search why is needed the cartItemCount
+  const { cartItems } = useSelector((state) => state.shopCart);
   const [input, setInput] = useState('');
+  const [isOpenCart, setIsOpenCart] = useState(false);
+
+  // Ensure the cart item count is consistently rendered on both server and client
+  const [cartItemCount, setCartItemCount] = useState(0);
+  useEffect(() => {
+    setCartItemCount(cartItems.length);
+  }, [cartItems]);
 
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem className='flex w-[10rem] justify-end'>
-          <Link href='/'>
-            <Image src='/Logo.jpeg' alt='Logo' width={100} height={100} />
-          </Link>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-      <NavigationMenuList className='w-[40rem] justify-end'>
-        <NavigationMenuItemWithContent
-          triggerText='Women'
-          contentItems={womenTags}
-        />
-        {/* <NavigationMenuItemWithContent
-          triggerText='Mens'
-          contentItems={menTags}
-        /> */}
-        <NavigationMenuItemWithContent
-          triggerText='Accessories'
-          contentItems={accesoriesTags}
-        />
-      </NavigationMenuList>
-      <NavigationMenuList className='mr-[5rem] gap-x-6'>
-        <NavigationMenuItem>
-          <SearchBar input={input} setInput={setInput} />
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <AiOutlineHeart size={20} />
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <IoPersonOutline size={20} />
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <BsBag size={20} className='cursor-pointer' />
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+    <>
+      <NavigationMenu>
+        <NavigationMenuList>
+          <NavigationMenuItem className='flex w-[10rem] justify-end'>
+            <Link href='/'>
+              <Image src='/Logo.jpeg' alt='Logo' width={100} height={100} />
+            </Link>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+        <NavigationMenuList className='w-[40rem] justify-end'>
+          <NavigationMenuItemWithContent
+            triggerText='Women'
+            contentItems={womenTags}
+          />
+          {/* <NavigationMenuItemWithContent
+            triggerText='Mens'
+            contentItems={menTags}
+          /> */}
+          <NavigationMenuItemWithContent
+            triggerText='Accessories'
+            contentItems={accesoriesTags}
+          />
+        </NavigationMenuList>
+        <NavigationMenuList className='mr-[5rem] gap-x-6'>
+          <NavigationMenuItem>
+            <SearchBar input={input} setInput={setInput} />
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <AiOutlineHeart size={20} />
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <IoPersonOutline size={20} />
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <BsBag
+              size={20}
+              className='cursor-pointer'
+              onClick={() => setIsOpenCart(!isOpenCart)}
+            />
+            {cartItemCount > 0 && (
+              <span className='absolute -top-1 end-0 mr-16 flex h-4 w-4 items-center justify-center rounded-full bg-slate-600 text-[0.5rem] text-white'>
+                {cartItemCount}
+              </span>
+            )}
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+      {isOpenCart && <ShopCart setIsOpen={setIsOpenCart} isOpen={isOpenCart} />}
+    </>
   );
 };
 

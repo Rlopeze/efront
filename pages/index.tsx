@@ -5,7 +5,6 @@ import { useGetProductsQuery } from './api/productsApi';
 
 export default function Home() {
   const { data, isLoading, isError } = useGetProductsQuery('');
-
   return (
     <Layout>
       <div className='mx-10'>
