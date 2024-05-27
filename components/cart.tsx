@@ -1,8 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
+import { BsTrash3 } from 'react-icons/bs';
 
-import { Trash } from 'lucide-react';
 import { Button } from './ui/button';
 import {
   Sheet,
@@ -14,6 +15,7 @@ import {
 
 import { cn } from './ui/utils';
 import { removeCartItem } from '../redux/features/shopCartSlice';
+import HorizontalDivider from './horizontalDivider';
 
 export function ShopCart({
   isOpen,
@@ -28,7 +30,6 @@ export function ShopCart({
   const removeCartItemHandler = (id: string) => {
     dispatch(removeCartItem(id));
   };
-
   return (
     <div className='grid grid-cols-2 gap-2'>
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -44,14 +45,42 @@ export function ShopCart({
             </SheetTitle>
           </SheetHeader>
           {cartItems.length > 0 ? (
-            <SheetDescription className='flex h-[50%] flex-col items-center justify-center gap-x-4 gap-y-2 text-black'>
-              {cartItems.map((item) => (
-                <div className='flex w-full justify-between px-10'>
-                  <h1>{item.name}</h1>
-                  <Trash onClick={() => removeCartItemHandler(item.product)} />
-                </div>
-              ))}
-              <Button className='text-xs'>Go to checkout</Button>
+            <SheetDescription className='mx-10 my-10 flex h-full flex-col gap-y-2 text-black'>
+              <div className='flex flex-grow flex-col gap-y-2'>
+                {cartItems.map((item) => (
+                  <div key={item.id} className='flex flex-col gap-y-4'>
+                    <div className='flex h-full flex-row gap-x-2'>
+                      <Image
+                        src={item.image}
+                        alt={`product ${item.id}`}
+                        width={100}
+                        height={100}
+                        className='h-[3.5cm] w-[3cm]'
+                      />
+                      <div className='flex flex-col gap-y-0.5'>
+                        <h1 className='text-xs text-slate-700'>{item.name}</h1>
+                        <h2 className='text-xs text-black text-black'>
+                          CLP ${item.price}
+                        </h2>
+                        <div className='flex  h-full  items-end'>
+                          <div className='flex h-5 w-5 cursor-pointer items-center justify-center rounded-full bg-gray-200'>
+                            <BsTrash3
+                              className='text-gray-600'
+                              onClick={() =>
+                                removeCartItemHandler(item.product)
+                              }
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <HorizontalDivider />
+                  </div>
+                ))}
+              </div>
+              <Button className='w-full self-end text-xs'>
+                Go to checkout
+              </Button>
             </SheetDescription>
           ) : (
             <SheetDescription className='flex h-[80%] flex-col items-center justify-center gap-x-4 gap-y-10'>
