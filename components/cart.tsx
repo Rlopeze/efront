@@ -15,7 +15,7 @@ import {
 
 import { cn } from './ui/utils';
 import { removeCartItem } from '../redux/features/shopCartSlice';
-import HorizontalDivider from './horizontalDivider';
+import { Separator } from './ui/separator';
 
 export function ShopCart({
   isOpen,
@@ -74,7 +74,7 @@ export function ShopCart({
                         </div>
                       </div>
                     </div>
-                    <HorizontalDivider />
+                    <Separator />
                   </div>
                 ))}
               </div>
