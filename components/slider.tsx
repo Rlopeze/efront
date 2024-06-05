@@ -14,10 +14,7 @@ export function CarouselPlugin({ products }: { products: any }) {
         {products.map((product: any, index: any) => (
           <Link
             href={{
-              pathname: '/productDetail',
-              query: {
-                id: product.id,
-              },
+              pathname: `/products/${product.id}`,
             }}
             key={index}
           >

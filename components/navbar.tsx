@@ -102,7 +102,7 @@ const Navbar = () => {
             </Link>
           </NavigationMenuItem>
         </NavigationMenuList>
-        <NavigationMenuList className='w-[40rem] justify-end'>
+        <NavigationMenuList className='justify-end'>
           <NavigationMenuItemWithContent
             triggerText='Women'
             contentItems={womenTags}
