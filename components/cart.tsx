@@ -63,7 +63,9 @@ export function ShopCart({
                         className='h-[3.5cm] w-[3cm]'
                       />
                       <div className='flex flex-col gap-y-0.5'>
-                        <h1 className='text-xs text-slate-700'>{item.name}</h1>
+                        <h1 className='text-xs text-slate-700'>
+                          {item.name} {item.size}
+                        </h1>
                         <h2 className='text-xs text-black text-black'>
                           CLP ${item.price}
                         </h2>
