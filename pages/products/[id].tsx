@@ -29,10 +29,10 @@ const ProductDetail = () => {
   const [selectedSize, setSelectedSize] = useState('');
   const { data, isLoading } = useGetAllProductByIDQuery(id);
   if (isLoading) return <div>Loading...</div>;
-  const { data: productDetail, quantity } = data;
+  const { data: productDetail, quantity, ids } = data;
   const setItemToCart = () => {
     const cartItem = {
-      product: productDetail.id,
+      product: ids[selectedSize],
       name: productDetail.name,
       price: productDetail.price,
       image: productDetail.image,
