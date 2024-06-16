@@ -16,9 +16,6 @@ export function SizeSelector({
   productSizes: { [key: string]: number };
 }) {
   const [selected, setSelected] = useState('');
-  // obtain key from  productSizes object
-  const productSizesKeys = Object.keys(productSizes);
-  const productSizesValues = Object.values(productSizes);
   return (
     <div>
       <div className='flex justify-between px-1 text-[0.6rem] text-gray-500'>
@@ -33,20 +30,12 @@ export function SizeSelector({
       </div>
       <Menubar className='h-[5rem]'>
         <MenubarMenu>
-          {sizes.map((size) => (
+          {sizes.map((size: string) => (
             <Button
+              disabled={productSizes[size] === 0}
               id={size}
-              disabled={
-                !productSizesKeys.includes(size) ||
-                productSizesValues[sizes.indexOf(size)] === 0
-              }
               variant='ghost'
-              className={`${selected === size ? 'bg-slate-800 text-white' : 'text-black'} ${
-                !productSizesKeys.includes(size) ||
-                productSizesValues[sizes.indexOf(size)] === 0
-                  ? 'line-through'
-                  : ''
-              } outline:none rounded-none text-[0.6rem] hover:bg-slate-800 hover:text-white`}
+              className={`${selected === size ? 'bg-slate-800 text-white' : 'text-black'} ${productSizes[size] === 0 && 'line-through'} outline:none rounded-none text-[0.6rem] hover:bg-slate-800 hover:text-white`}
               onClick={() => {
                 setSize(size);
                 setSelected(size);

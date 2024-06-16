@@ -18,7 +18,19 @@ export const productApi = createApi({
         },
       }),
     }),
+    getAllProductByID: builder.query({
+      query: (id) => ({
+        url: '/get_product_by_id_specific_color/',
+        params: {
+          id,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useGetProductsQuery, useGetProductDetailQuery } = productApi;
+export const {
+  useGetProductsQuery,
+  useGetProductDetailQuery,
+  useGetAllProductByIDQuery,
+} = productApi;
