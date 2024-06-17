@@ -1,0 +1,62 @@
+[
+  {
+    "Name": "Juan Pérez",
+    "Email": "juan.perez@example.com",
+    "Status": "Activo",
+    "Balance": 150075
+  },
+  {
+    "Name": "María López",
+    "Email": "maria.lopez@example.com",
+    "Status": "Inactivo",
+    "Balance": 275050
+  },
+  {
+    "Name": "Carlos García",
+    "Email": "carlos.garcia@example.com",
+    "Status": "Activo",
+    "Balance": 12500
+  },
+  {
+    "Name": "Ana Martínez",
+    "Email": "ana.martinez@example.com",
+    "Status": "Activo",
+    "Balance": 320020
+  },
+  {
+    "Name": "Luis Rodríguez",
+    "Email": "luis.rodriguez@example.com",
+    "Status": "Activo",
+    "Balance": 5000
+  },
+  {
+    "Name": "Carmen Sánchez",
+    "Email": "carmen.sanchez@example.com",
+    "Status": "Activo",
+    "Balance": 74580
+  },
+  {
+    "Name": "Miguel Fernández",
+    "Email": "miguel.fernandez@example.com",
+    "Status": "Activo",
+    "Balance": 43000
+  },
+  {
+    "Name": "Elena Gómez",
+    "Email": "elena.gomez@example.com",
+    "Status": "Inactivo",
+    "Balance": 120050
+  },
+  {
+    "Name": "Sofía Díaz",
+    "Email": "sofia.diaz@example.com",
+    "Status": "Activo",
+    "Balance": 98025
+  },
+  {
+    "Name": "Pedro Torres",
+    "Email": "pedro.torres@example.com",
+    "Status": "Activo",
+    "Balance": 210000
+  }
+]

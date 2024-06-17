@@ -7,7 +7,7 @@ export const productApi = createApi({
   }),
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: () => '/get_products/',
+      query: () => '/',
     }),
 
     getProductDetail: builder.query({
@@ -18,11 +18,17 @@ export const productApi = createApi({
         },
       }),
     }),
-    getAllProductByID: builder.query({
-      query: (id) => ({
-        url: '/get_product_by_id_specific_color/',
-        params: {
-          id,
+
+    createProduct: builder.mutation({
+      query: (product) => ({
+        url: '/add_product/',
+        method: 'POST',
+        body: product,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization:
+            // TODO: Change this to a real token
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5NDQxNjUwLCJqdGkiOiJjYTQ3YmRjYTJkNzI0ODYzOWE0OTAxNWNkODU0YjY3YyIsInVzZXJfaWQiOiI5NTZjMGI2OS0yMmZjLTQ2ZDQtYTQ1Mi0zOTZiZDExNDMwY2IifQ.IYpZjcsAVHIHvLl-w6coUqUdPdvdJ3YXLon6hkVFI-M',
         },
       }),
     }),
@@ -32,5 +38,5 @@ export const productApi = createApi({
 export const {
   useGetProductsQuery,
   useGetProductDetailQuery,
-  useGetAllProductByIDQuery,
+  useCreateProductMutation,
 } = productApi;
