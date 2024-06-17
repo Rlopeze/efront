@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
 import * as ToastPrimitives from '@radix-ui/react-toast';

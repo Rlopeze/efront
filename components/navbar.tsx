@@ -13,12 +13,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from './ui/navigation-menu';
-import {
-  BsBag,
-  IoPersonOutline,
-  AiOutlineHeart,
-  IoBarChartOutline,
-} from '../utils/icons';
+import { BsBag, AiOutlineHeart } from '../utils/icons';
 import { cn } from './ui/utils';
 import SearchBar from './searchBar';
 import ProfileDropDownMenu from './profile_dropdown_menu';
@@ -145,11 +140,6 @@ const Navbar = () => {
                 {cartItemCount}
               </span>
             )}
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href='/admin/orders'>
-              <IoBarChartOutline size={20} />
-            </Link>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
