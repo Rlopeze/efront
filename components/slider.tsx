@@ -18,19 +18,22 @@ export function CarouselPlugin({ products }: { products: any }) {
             }}
             key={index}
           >
-            <CarouselItem key={index} className='basis-1/4'>
-              <Card className='cursor-pointer rounded-none border-none'>
-                <CardContent className='flex min-h-[30rem] px-0'>
-                  <Image
-                    src={
-                      product.image
-                        ? product.image
-                        : '/product-image-placeholder.png'
-                    }
-                    alt='product'
-                    height={150}
-                    width={300}
-                  />
+            <CarouselItem key={index} className='basis-1/2'>
+              <Card className='cursor-pointer rounded-none border-0'>
+                <CardContent className='flex min-h-[30rem] px-0 '>
+                  <div className='relative h-[30rem] w-[25rem]'>
+                    <Image
+                      src={
+                        product.image
+                          ? product.image
+                          : '/product-image-placeholder.png'
+                      }
+                      alt='product'
+                      quality={100}
+                      sizes='50vw'
+                      fill
+                    />
+                  </div>
                 </CardContent>
                 <CardFooter className='my-0 flex flex-col items-start justify-start px-0 pt-0.5'>
                   <p className='text-xs'>{product.description}</p>
