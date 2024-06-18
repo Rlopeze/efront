@@ -3,6 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { useState } from 'react';
 import Layout from '../../components/wrappers/Layout';
 import { Button } from '../../components/ui/button';
 import { useCreateProductMutation } from '../api/productsApi';
@@ -40,6 +41,7 @@ import {
 } from '../../components/ui/select';
 import AdminSidebar from '../../components/wrappers/AdminSidebar';
 import { toast } from '../../components/ui/use-toast';
+import MassiveProductsUpload from '../../components/MassiveUpload/massiveProductsUpload';
 
 const FormSchema = z.object({
   name: z.string().min(5, {
@@ -69,6 +71,7 @@ const FormSchema = z.object({
 });
 
 export default function NewProduct() {
+  const [openMassiveUpload, setOpenMassiveUpload] = useState(false);
   const [createProduct] = useCreateProductMutation();
   const router = useRouter();
 
@@ -430,7 +433,11 @@ export default function NewProduct() {
                       </div>
                     </CardContent>
                     <CardFooter>
-                      <Button>Crear Productos</Button>
+                      <Button
+                        onClick={() => setOpenMassiveUpload(!openMassiveUpload)}
+                      >
+                        Crear Productos
+                      </Button>
                     </CardFooter>
                   </Card>
                 </TabsContent>
@@ -439,6 +446,12 @@ export default function NewProduct() {
           </div>
         </AdminSidebar>
       </div>
+      {openMassiveUpload ? (
+        <MassiveProductsUpload
+          isOpen={openMassiveUpload}
+          setIsOpen={setOpenMassiveUpload}
+        />
+      ) : null}
     </Layout>
   );
 }
