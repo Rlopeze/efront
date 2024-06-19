@@ -130,16 +130,24 @@ const Navbar = () => {
             <ProfileDropDownMenu />
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <BsBag
-              size={20}
-              className='cursor-pointer'
+            <div
+              className='relative cursor-pointer'
               onClick={() => setIsOpenCart(!isOpenCart)}
-            />
-            {cartItemCount > 0 && (
-              <span className='absolute -top-1 end-0 mr-16 flex h-4 w-4 items-center justify-center rounded-full bg-slate-600 text-[0.5rem] text-white'>
-                {cartItemCount}
-              </span>
-            )}
+              role='button'
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  setIsOpenCart(!isOpenCart);
+                }
+              }}
+            >
+              <BsBag size={20} />
+              {cartItemCount > 0 && (
+                <span className='absolute -right-2 -top-3 flex h-4 w-4 items-center justify-center rounded-full bg-slate-600 text-[0.5rem] text-white'>
+                  {cartItemCount}
+                </span>
+              )}
+            </div>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Link href='/admin/orders'>
