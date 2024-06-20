@@ -24,8 +24,7 @@ import { IoPersonOutline } from '../utils/icons';
 
 const editProfileSchema = z.object({
   name: z.string().min(1, 'Name is required'),
-  lastName: z.string().min(1, 'Name is required'),
-  email: z.string().min(1, 'Name is required'),
+  email: z.string().email(),
 });
 
 const EditProfile = () => {
@@ -35,7 +34,10 @@ const EditProfile = () => {
   const auth = useSelector(
     (store: {
       auth: {
-        user: null | { access: string; user: { username: string } };
+        user: null | {
+          access: string;
+          user: { username: string; email: string };
+        };
         isAuthenticated: boolean;
       };
     }) => store.auth
@@ -44,9 +46,8 @@ const EditProfile = () => {
   const EditProfileForm = useForm<z.infer<typeof editProfileSchema>>({
     resolver: zodResolver(editProfileSchema),
     defaultValues: {
-      name: '',
-      lastName: '',
-      email: '',
+      name: auth.user?.user.username,
+      email: auth.user?.user.email,
     },
   });
 
@@ -105,19 +106,6 @@ const EditProfile = () => {
               />
               <FormField
                 control={EditProfileForm.control}
-                name='lastName'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Apellido</FormLabel>
-                    <FormControl>
-                      <Input placeholder='Ingresa tu apellido' {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={EditProfileForm.control}
                 name='email'
                 render={({ field }) => (
                   <FormItem>
@@ -144,7 +132,7 @@ const EditProfile = () => {
                 RETURN
               </Button>
               <Button
-                className='w-full rounded-3xl'
+                className='invisible w-full rounded-3xl'
                 onClick={() => onDeleteProfile}
               >
                 Delete
