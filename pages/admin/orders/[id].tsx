@@ -121,7 +121,7 @@ export default function OrderDetail() {
                             </div>
                             <div className='flex flex-row justify-between'>
                               <h1>Costos de Envío</h1>
-                              <h1>$2000</h1>
+                              <h1>$0</h1>
                             </div>
                             <div className='flex flex-row justify-between text-xl font-bold'>
                               <h1>Total</h1>
@@ -129,7 +129,7 @@ export default function OrderDetail() {
                                 <h1 className='text-xs font-normal text-[#686868]'>
                                   CLP
                                 </h1>
-                                <h1>${data.data.total_amount + 2000}</h1>
+                                <h1>${data.data.total_amount}</h1>
                               </div>
                             </div>
                           </div>

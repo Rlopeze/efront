@@ -108,8 +108,8 @@ export default function Checkout() {
       0
     );
     setSubtotal(sub);
-    // It is assumed that the shipping cost is $2000
-    setTotal(sub + 2000);
+    // It is assumed that the shipping cost is $0
+    setTotal(sub);
   }
 
   function processCartData() {
@@ -235,7 +235,7 @@ export default function Checkout() {
                 </div>
                 <div className='flex flex-row justify-between'>
                   <h1>Costos de Envío</h1>
-                  <h1>$2000</h1>
+                  <h1>$0</h1>
                 </div>
                 <div className='flex flex-row justify-between text-xl font-bold'>
                   <h1>Total</h1>

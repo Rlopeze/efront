@@ -3,11 +3,10 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const ordersApi = createApi({
   reducerPath: 'ordersApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8000/api/v1/orders',
+    baseUrl: `${process.env.NEXT_PUBLIC_API_URL}/orders`,
     prepareHeaders: (headers) => {
       // TODO get token from local storage
-      const token =
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIwMDU3MzQ1LCJqdGkiOiI0NzQyOGI5NTNhMTU0MzRiODU4YjE3YjcxNDYwMWUyZiIsInVzZXJfaWQiOiI2MDRkMDNkNy0xYmVjLTQ5NjUtODA2OS03ZjRkZTMxYjM1NjIifQ.qVn0_Xp_rzXh5MusCWOgDkx_Rfx0sn3gg-chVeemEMo';
+      const token = process.env.NEXT_PUBLIC_TOKEN;
       if (token) {
         headers.set('Authorization', `Bearer ${token}`);
       }

@@ -37,9 +37,7 @@ const AccordionItemContent = ({ title }: { title: string }) => (
 const ProductsByCategory = () => {
   const router = useRouter();
   const { id } = router.query;
-  console.log('EL ID QUE ME LLEGA ES:', id);
   const { data, isLoading, isError } = useGetProductsByCategoryQuery(id);
-  console.log('LA DATA QUE ME LLEGA ES:', data);
   const accordionItems = [
     'SORT BY',
     'PRODUCT TYPE',
